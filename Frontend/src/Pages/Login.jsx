@@ -24,7 +24,7 @@ const handleSubmit=()=>{
         email,
         password
     }
-axios.post("http://localhost:2147/user/login",payload)
+axios.post("https://enthusiastic-khakis-bee.cyclic.app/user/login",payload)
 .then((res)=>{
     console.log(res.data.token)
     alert(res.data.msg)

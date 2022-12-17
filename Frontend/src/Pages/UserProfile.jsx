@@ -22,7 +22,7 @@ const AdminProfile = () => {
 //.................... Admin Profile Get Method .....................//
 
 const getProfile=()=>{
-    axios.get("http://localhost:2147/user/userProfile",{
+    axios.get("https://enthusiastic-khakis-bee.cyclic.app/user/userProfile",{
         headers:{
         authorization:`Bearer ${localStorage.getItem("token")}`
         }
@@ -48,7 +48,7 @@ useEffect(()=>{
       role,
       avtar
     }
-    axios.patch("http://localhost:2147/user/userProfileEdit",payload,{
+    axios.patch("https://enthusiastic-khakis-bee.cyclic.app/user/userProfileEdit",payload,{
       headers:{
         authorization:`Bearer ${localStorage.getItem("token")}`
       }

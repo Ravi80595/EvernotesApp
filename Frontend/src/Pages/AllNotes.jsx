@@ -17,7 +17,7 @@ const Notes = () => {
 // ........................... All Notes Method here ........................
 
 const getData=()=>{
-  axios.get("http://localhost:2147/notes",{
+  axios.get("https://enthusiastic-khakis-bee.cyclic.app/notes",{
     headers:{
       authorization:`Bearer ${localStorage.getItem("token")}`
     }
@@ -37,7 +37,7 @@ useEffect(()=>{
 
 const handleDelete=(noteID)=>{
   console.log("clicked")
-  axios.delete(`http://localhost:2147/delete/${noteID}`,{
+  axios.delete(`https://enthusiastic-khakis-bee.cyclic.app/delete/${noteID}`,{
     headers:{
       authorization:`Bearer ${localStorage.getItem("token")}`
     }
@@ -58,7 +58,7 @@ const handleEdit=(noteID)=>{
     category
   }
   console.log(payload,noteID)
-  axios.patch(`http://localhost:2147/update/${noteID}`,payload,{
+  axios.patch(`https://enthusiastic-khakis-bee.cyclic.app/update/${noteID}`,payload,{
     headers:{
       authorization:`Bearer ${localStorage.getItem("token")}`
     }

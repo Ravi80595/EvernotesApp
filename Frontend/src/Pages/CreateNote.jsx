@@ -17,7 +17,7 @@ const handleAdd=()=>{
     note,
     category
   }
-axios.post("http://localhost:2147/create",payload)
+axios.post("https://enthusiastic-khakis-bee.cyclic.app/create",payload)
 .then((res)=>{
   console.log(res)
   alert(res.data.msg)

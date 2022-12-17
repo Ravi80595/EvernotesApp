@@ -31,7 +31,7 @@ const handleSubmit=()=>{
       password
     }
     // Signup request with payload
-axios.post("http://localhost:2147/user/signup",payload)
+axios.post("https://enthusiastic-khakis-bee.cyclic.app/user/signup",payload)
 .then((res)=>{
   // alert(res.data.msg)
   console.log(res)

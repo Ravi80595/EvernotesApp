@@ -11,7 +11,7 @@ const User = () => {
 // ........................... Admin Profile Method here ........................
 
   const getProfile=()=>{
-    axios.get("http://localhost:2147/user/userProfile",{
+    axios.get("https://enthusiastic-khakis-bee.cyclic.app/user/userProfile",{
       headers:{
         authorization:`Bearer ${localStorage.getItem("token")}`
       }
