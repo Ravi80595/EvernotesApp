@@ -16,6 +16,8 @@ import Calculator from './Calculator'
 import User from './User'
 import { useEffect } from 'react'
 import Contact from './Contact'
+import AdminPage from "./AdminPage"
+import AdminLogin from './AdminLogin'
 
 
 const Dashboard = () => {
@@ -83,6 +85,10 @@ useEffect(()=>{
           <AiOutlineTeam className='lhsLogo'/>
           <Text pl='15px' className="lhsName">Contact Us</Text>
           </Flex>
+           <Flex id='usersBox' p='7px 17px' className='linkItem' onClick={()=>setShow("Admin")}>
+          <AiOutlineTeam className='lhsLogo'/>
+          <Text pl='15px' className="lhsName">Admin</Text>
+          </Flex>
         </Box>
       </Box>
       <Box id='rhsBox' w='84%' ml='16%' h='auto'> 
@@ -94,7 +100,7 @@ useEffect(()=>{
         </Box>
       <Box id='rhsBody' m='30px' p='30px'>
         {
-          show==="Users"?<AllNotes/>:show==2?<TextAnylzer/>:show==3?<CreateNote/>:show=="AllAdmin"?<Calculator/>:show=="Contact"?<Contact/>:show=="Trash"?<TrashPage/>:<h1>r</h1>
+          show==="Users"?<AllNotes/>:show==2?<TextAnylzer/>:show==3?<CreateNote/>:show=="AllAdmin"?<Calculator/>:show=="Contact"?<Contact/>:show=="Trash"?<TrashPage/>:<AdminPage/>
         }
       </Box>
       </Box>

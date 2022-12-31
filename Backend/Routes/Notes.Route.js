@@ -5,7 +5,7 @@ const noteRouter = express.Router()
 const {authenticate} =require("../Middelwares/authenticate")
 
 
-// All notes from Here
+// All notes from Here for users
 
 noteRouter.get("/notes",authenticate,async(req,res)=>{
     try{
@@ -67,6 +67,20 @@ noteRouter.delete("/delete/:noteID",authenticate,async(req,res)=>{
         res.status(200).send({"msg":"Note Deleted successfully"})
     }
 })
+
+// All Notes for admin
+
+noteRouter.get("/notess",async(req,res)=>{
+    try{
+        const notes = await NoteModel.find()
+        res.status(200).send({"msg":"All User Here",notes})
+    }
+    catch(err){
+        console.log(err)
+        res.status(400).send({"err":"Something went wrong"})
+    }
+})
+
 
 module.exports = {
     noteRouter
