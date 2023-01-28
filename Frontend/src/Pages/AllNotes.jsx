@@ -1,8 +1,9 @@
 import React from 'react'
-import {Box,Heading,Button,Grid,GridItem,Input,Text,Flex,useDisclosure,Modal,ModalBody,ModalOverlay,ModalCloseButton,ModalContent,ModalHeader} from '@chakra-ui/react'
+import {Box,Heading,Button,Grid,GridItem,Input,Text,Flex,useDisclosure,Modal,ModalBody,ModalOverlay,ModalCloseButton,ModalContent,ModalHeader,Spinner} from '@chakra-ui/react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
+import { baseUrl } from './Components/BaseUrl'
 
 
 
@@ -12,20 +13,21 @@ const Notes = () => {
   const [note,setNote]= useState("")
   const [category,setCategory]=useState("")
   const {isOpen,onOpen,onClose} = useDisclosure()
+  const [isLoading,setIsLoading]=useState(false)
 
 
 // ........................... All Notes Method here ........................
 
 const getData=()=>{
-  axios.get("https://enthusiastic-khakis-bee.cyclic.app/notes",{
+  setIsLoading(true)
+  axios.get(`${baseUrl}/notes`,{
     headers:{
       authorization:`Bearer ${localStorage.getItem("token")}`
     }
   })
   .then((res)=>{
-    console.log(res)
+    setIsLoading(false)
     setData(res.data.notes)
-    alert(res.data.msg)
   })
 }
 useEffect(()=>{
@@ -36,15 +38,20 @@ useEffect(()=>{
 // ........................... Delete Method here ........................
 
 const handleDelete=(noteID)=>{
-  console.log("clicked")
-  axios.delete(`https://enthusiastic-khakis-bee.cyclic.app/delete/${noteID}`,{
+  setIsLoading(true)
+  axios.delete(`${baseUrl}/delete/${noteID}`,{
     headers:{
       authorization:`Bearer ${localStorage.getItem("token")}`
     }
   })
   .then((res)=>{
+    setIsLoading(false)
     getData()
     alert("Note Deleted Successfully")
+  })
+  .catch((err)=>{
+    console.log(err)
+    setIsLoading(false)
   })
 }
 
@@ -57,22 +64,26 @@ const handleEdit=(noteID)=>{
     note,
     category
   }
-  console.log(payload,noteID)
-  axios.patch(`https://enthusiastic-khakis-bee.cyclic.app/update/${noteID}`,payload,{
+  setIsLoading(true)
+  axios.patch(`${baseUrl}/update/${noteID}`,payload,{
     headers:{
       authorization:`Bearer ${localStorage.getItem("token")}`
     }
   })
   .then((res)=>{
-    console.log(res.data)
+    setIsLoading(false)
     getData()
-    setTitle("")
-    setNote("")
-    setCategory("")
+    setTitle(" ")
+    setNote(" ")
+    setCategory(" ")
     alert("Note Edited Successfully")
   })
-  
 }
+
+if(isLoading){
+  return <Spinner thickness='4px' speed='0.65s' emptyColor='gray.200' color='blue.500' size='xl'/>
+}
+
 
   return (
     <>

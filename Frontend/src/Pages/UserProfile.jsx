@@ -22,7 +22,7 @@ const AdminProfile = () => {
 //.................... Admin Profile Get Method .....................//
 
 const getProfile=()=>{
-    axios.get("https://enthusiastic-khakis-bee.cyclic.app/user/userProfile",{
+    axios.get("https://modern-neckerchief-toad.cyclic.app/user/userProfile",{
         headers:{
         authorization:`Bearer ${localStorage.getItem("token")}`
         }
@@ -48,7 +48,7 @@ useEffect(()=>{
       role,
       avtar
     }
-    axios.patch("https://enthusiastic-khakis-bee.cyclic.app/user/userProfileEdit",payload,{
+    axios.patch("https://modern-neckerchief-toad.cyclic.app/user/userProfileEdit",payload,{
       headers:{
         authorization:`Bearer ${localStorage.getItem("token")}`
       }
