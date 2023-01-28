@@ -8,6 +8,7 @@ const noteSchema = mongoose.Schema({
     title:String,
     note:String,
     category:[],
+    userID:String,
     NoteDate:{type:String,default:GetCurrent1Date},
     NoteTime:{type:String,default:GetCurrent1Time}
 })

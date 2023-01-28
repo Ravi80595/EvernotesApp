@@ -9,9 +9,9 @@ import UserProfile from "../Pages/UserProfile"
 const AllRoutes = () => {
   return (
       <Routes>
-      <Route path="/" element={<HomePage/>} />
+      <Route path="/home" element={<HomePage/>} />
       <Route path="/sign" element={<Signup/>} />
-      <Route path="/login" element={<Login/>} />
+      <Route path="/" element={<Login/>} />
       <Route path="/userprofile" element={<UserProfile/>} />
       <Route path="/createNote" element={<CreateNote/>} />
       </Routes>

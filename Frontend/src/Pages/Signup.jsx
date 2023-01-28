@@ -9,7 +9,7 @@ import {
 import { useState } from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
   const [firstname,setFirstName]=useState("")
@@ -17,7 +17,7 @@ const Signup = () => {
   const [email,setEmail]=useState("")
   const [password, setPassword] = useState('')
   const [error,setError]= useState(false)
-  // const navigate=useNavigate()
+  const navigate=useNavigate()
 
 
 
@@ -31,9 +31,10 @@ const handleSubmit=()=>{
       password
     }
     // Signup request with payload
-axios.post("https://enthusiastic-khakis-bee.cyclic.app/user/signup",payload)
+axios.post("https://modern-neckerchief-toad.cyclic.app/user/signup",payload)
 .then((res)=>{
-  // alert(res.data.msg)
+  alert('Signup Success')
+  navigate("/")
   console.log(res)
 })
 .catch(function (err){

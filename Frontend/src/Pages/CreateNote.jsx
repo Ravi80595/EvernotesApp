@@ -2,6 +2,7 @@ import React from 'react'
 import { Box,Heading,Input,Stack,Button} from '@chakra-ui/react'
 import { useState } from 'react'
 import axios from 'axios'
+import { baseUrl } from './Components/BaseUrl'
 
 const CreateNote = () => {
     const [title,setTitle]=useState("")
@@ -17,10 +18,17 @@ const handleAdd=()=>{
     note,
     category
   }
-axios.post("https://enthusiastic-khakis-bee.cyclic.app/create",payload)
+axios.post(`${baseUrl}/create`,payload,{
+  headers:{
+    authorization:`Bearer ${localStorage.getItem("token")}`
+  }
+})
 .then((res)=>{
   console.log(res)
-  alert(res.data.msg)
+  alert("Note Added Success")
+  setTitle(' ')
+  setNote(" ")
+  setCategory(" ")
 })
 .catch(function (err){
   console.log(err)

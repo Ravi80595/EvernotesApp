@@ -17,7 +17,7 @@ const AdminPage = () => {
 
 const getData=()=>{
     onOpen()
-    axios.get("http://localhost:2147/notess",{
+    axios.get("https://modern-neckerchief-toad.cyclic.app/notess",{
       headers:{
         authorization:`Bearer ${localStorage.getItem("token")}`
       }
@@ -35,7 +35,7 @@ const getData=()=>{
 
 const handleDelete=(noteID)=>{
     console.log("clicked")
-    axios.delete(`https://enthusiastic-khakis-bee.cyclic.app/delete/${noteID}`,{
+    axios.delete(`https://modern-neckerchief-toad.cyclic.app/delete/${noteID}`,{
       headers:{
         authorization:`Bearer ${localStorage.getItem("token")}`
       }

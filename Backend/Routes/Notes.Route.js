@@ -8,9 +8,10 @@ const {authenticate} =require("../Middelwares/authenticate")
 // All notes from Here for users
 
 noteRouter.get("/notes",authenticate,async(req,res)=>{
+    const user=req.body.userID
     try{
-        const notes = await NoteModel.find()
-        res.status(200).send({"msg":"All User Here",notes})
+        const notes = await NoteModel.find({userID:user})
+        res.status(200).send({"msg":"All Notes Here",notes})
     }
     catch(err){
         console.log(err)
@@ -21,9 +22,14 @@ noteRouter.get("/notes",authenticate,async(req,res)=>{
 // note Create Method
 
 noteRouter.post("/create",authenticate,async(req,res)=>{
-    const payload = req.body
+    const {title,note,category,userID} = req.body
     try{    
-        const new_note = new NoteModel(payload)
+        const new_note = new NoteModel({
+            title,
+            note,
+            category,
+            userID
+        })
         await new_note.save()
         res.status(200).send({'msg':"New Note Created Successfully"})
     }   
@@ -58,8 +64,6 @@ noteRouter.delete("/delete/:noteID",authenticate,async(req,res)=>{
     const noteID = req.params.noteID
     const userID = req.body.userID
     const note = await NoteModel.findOne({_id:noteID})
-    // console.log(note)
-    // console.log(userID)
     if(userID !== note.userID){
         res.status(400).send({"msg":"User is not Authorized"})
     }else{

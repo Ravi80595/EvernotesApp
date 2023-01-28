@@ -45,7 +45,7 @@ useEffect(()=>{
  const handleLogout=()=>{
   const emptyToken="null"
   localStorage.setItem("token",emptyToken)
-  navigate("/login")
+  navigate("/")
 }
 
   return (
