@@ -19,14 +19,12 @@ const Notes = () => {
 // ........................... All Notes Method here ........................
 
 const getData=()=>{
-  setIsLoading(true)
   axios.get(`${baseUrl}/notes`,{
     headers:{
       authorization:`Bearer ${localStorage.getItem("token")}`
     }
   })
   .then((res)=>{
-    setIsLoading(false)
     setData(res.data.notes)
   })
 }

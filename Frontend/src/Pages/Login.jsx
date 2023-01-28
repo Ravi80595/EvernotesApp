@@ -29,7 +29,7 @@ axios.post("https://modern-neckerchief-toad.cyclic.app/user/login",payload)
     console.log(res.data.token)
     alert(res.data.msg)
     localStorage.setItem("token",res.data.token)
-    navigate("/")
+    navigate("/home")
 })
 .catch(function (err){
     alert(err.response.data.msg)

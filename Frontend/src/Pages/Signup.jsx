@@ -34,7 +34,7 @@ const handleSubmit=()=>{
 axios.post("https://modern-neckerchief-toad.cyclic.app/user/signup",payload)
 .then((res)=>{
   alert('Signup Success')
-  navigate("/login")
+  navigate("/")
   console.log(res)
 })
 .catch(function (err){
